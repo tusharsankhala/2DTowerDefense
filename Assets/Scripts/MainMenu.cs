@@ -9,13 +9,14 @@ public class MainMenu : MonoBehaviour
     
     public void LoadStartScene()
     {
+        AudioManager.Instance.PlaySFX(3);
         SceneManager.LoadScene(startSceneName);
     }
 
     // Update is called once per frame
     public void QuitGame()
     {
-        Debug.Log("Quit Game");
+        AudioManager.Instance.PlaySFX(3);
         Application.Quit();    
     }
 }

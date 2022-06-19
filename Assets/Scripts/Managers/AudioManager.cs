@@ -6,14 +6,30 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     [NonSerialized]
-    public static AudioManager _mInstance;
+    private static AudioManager _mInstance;
 
-    private AudioSource[] _mAudioSFX;
+    public AudioSource[] audioSFX;
     public AudioSource levelMusic, bossMusic, victoryMusic, loseMusic;
 
+    public static AudioManager Instance
+    {
+        get
+        {
+            return _mInstance;
+        }
+    }
+    
     private void Awake()
     {
-        _mInstance = this;
+        if (_mInstance == null)
+        {
+            _mInstance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     // Start is called before the first frame update
@@ -56,7 +72,7 @@ public class AudioManager : MonoBehaviour
     
     public void PlaySFX(int sfx)
     {
-        _mAudioSFX[sfx].Stop();
-        _mAudioSFX[sfx].Play();
+        audioSFX[sfx].Stop();
+        audioSFX[sfx].Play();
     }
 }
