@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TowerDefense.Managers;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,14 +10,14 @@ public class MainMenu : MonoBehaviour
     
     public void LoadStartScene()
     {
-        AudioManager.Instance.PlaySFX(3);
+        AudioManager.instance.PlaySFX(3);
         SceneManager.LoadScene(startSceneName);
     }
 
     // Update is called once per frame
     public void QuitGame()
     {
-        AudioManager.Instance.PlaySFX(3);
+        AudioManager.instance.PlaySFX(3);
         Application.Quit();    
     }
 }
